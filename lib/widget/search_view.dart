@@ -106,7 +106,6 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
                   child: TextField(
                     focusNode: _focusNode,
                     controller: _controller,
-                    cursorWidth: ,
                     decoration: InputDecoration(
                         hintStyle: TextStyle(color: Color(0xFFB8B8B8), fontSize: 13),
                         contentPadding: EdgeInsets.fromLTRB(_left + 27, 5, 28, 5),

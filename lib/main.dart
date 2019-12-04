@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'pages/search_view_page.dart';
+import 'pages/calculator_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,6 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routes: {
         "search": (BuildContext ctx) => SearchViewPage(),
+        "calculator": (BuildContext ctx) => CalculatorPage(),
       },
       theme: ThemeData(
         // This is the theme of your application.
@@ -64,8 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
 
-    int progress = 0;
-    bool downloading = false;
 
     return Scaffold(
         appBar: AppBar(
@@ -74,12 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
         body: ListView(
           children: <Widget>[
             buildItem("搜索框", "search"),
-            FlatButton(
-              child: Text("下载" + (downloading ? "" : progress)),
-              onPressed: (){
+            buildItem("计算器", "calculator"),
 
-              },
-            )
           ],
         ));
   }

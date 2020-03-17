@@ -4,15 +4,15 @@ import '../utils/image_helper.dart';
 import '../utils/calculator.dart';
 import '../utils/widget_util.dart';
 
-
-class CalculatorPage extends StatefulWidget{
+class CalculatorPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _CalculatorPageState();
   }
 }
 
-class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStateMixin {
+class _CalculatorPageState extends State<CalculatorPage>
+    with TickerProviderStateMixin {
   String text1 = "";
   String text2 = "";
 
@@ -23,7 +23,7 @@ class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStat
   double font1 = 35;
   double font2 = 20;
   bool hideFont2 = false;
-  static Calculator calculator = Calculator();
+  Calculator calculator = Calculator();
   double fontLevel1, fontLevel2;
   double currentFontLevel;
 
@@ -31,8 +31,10 @@ class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStat
   void initState() {
     super.initState();
 
-    controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
-    CurvedAnimation easy = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
+    CurvedAnimation easy =
+        CurvedAnimation(parent: controller, curve: Curves.easeIn);
     animation = Tween(begin: 0.0, end: 1.0).animate(easy)
       ..addListener(() {
         double v = animation.value * 50;
@@ -90,7 +92,10 @@ class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStat
       child: Center(
         child: Text(
           text,
-          style: TextStyle(fontSize: WidgetUtil.getFontSize(34), color: Colors.white, fontFamily: "din_medium"),
+          style: TextStyle(
+              fontSize: WidgetUtil.getFontSize(34),
+              color: Colors.white,
+              fontFamily: "din_medium"),
         ),
       ),
     );
@@ -126,7 +131,8 @@ class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStat
       child: Center(
         child: Text(
           "C",
-          style: TextStyle(color: Colors.white, fontSize: WidgetUtil.getFontSize(28)),
+          style: TextStyle(
+              color: Colors.white, fontSize: WidgetUtil.getFontSize(28)),
         ),
       ),
     );
@@ -159,7 +165,10 @@ class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStat
                 child: Center(
                   child: Text(
                     text1,
-                    style: TextStyle(fontSize: font1, color: const Color(0xff333333), fontFamily: "din_medium"),
+                    style: TextStyle(
+                        fontSize: font1,
+                        color: const Color(0xff333333),
+                        fontFamily: "din_medium"),
                   ),
                 )),
           ),
@@ -173,7 +182,10 @@ class _CalculatorPageState extends State<CalculatorPage> with TickerProviderStat
                     child: Center(
                       child: Text(
                         text2,
-                        style: TextStyle(fontSize: font2, color: const Color(0xffCCCCCC), fontFamily: "din_medium"),
+                        style: TextStyle(
+                            fontSize: font2,
+                            color: const Color(0xffCCCCCC),
+                            fontFamily: "din_medium"),
                       ),
                     )),
               )),

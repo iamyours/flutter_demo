@@ -108,7 +108,7 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
                     controller: _controller,
                     decoration: InputDecoration(
                         hintStyle: TextStyle(color: Color(0xFFB8B8B8), fontSize: 13),
-                        contentPadding: EdgeInsets.fromLTRB(_left + 27, 5, 28, 5),
+                        contentPadding: EdgeInsets.fromLTRB(_left + 27, 5, 28, 11),
                         border: InputBorder.none,
                         hintText: hint),
                     style: TextStyle(color: Color(0xff333333), fontSize: 13),

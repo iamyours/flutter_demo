@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/search_view_page.dart';
 import 'pages/calculator_page.dart';
+import 'pages/canvas_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
       routes: {
         "search": (BuildContext ctx) => SearchViewPage(),
         "calculator": (BuildContext ctx) => CalculatorPage(),
+        "canvas": (BuildContext ctx) => CanvasPage(),
       },
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -67,7 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
 
-
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -76,7 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             buildItem("搜索框", "search"),
             buildItem("计算器", "calculator"),
-
           ],
         ));
   }

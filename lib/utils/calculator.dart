@@ -1,4 +1,5 @@
 import 'd_stack.dart';
+import 'package:decimal/decimal.dart';
 
 class Calculator {
   //计算器表达式项
@@ -69,7 +70,7 @@ class Calculator {
   }
 
   static bool isNumber(String text) {
-    RegExp number = RegExp(r"^[0-9\.]+$");
+    RegExp number = RegExp(r"^[0-9\.]+[e]*[\-]*[0-9]*$");
     return number.hasMatch(text);
   }
 
@@ -125,7 +126,7 @@ class Calculator {
   }
 
   String calculate() {
-    DStack<double> numbers = DStack(30);
+    DStack<Decimal> numbers = DStack(30);
     DStack<String> opts = DStack(30);
     int i = 0;
     if (expressionItems.isEmpty) return "";
@@ -136,15 +137,16 @@ class Calculator {
       String str;
       if (i < end) str = expressionItems[i];
       if (str != null && isNumber(str)) {
-        numbers.push(double.parse(str));
+        numbers.push(Decimal.parse(str));
         i++;
-      } else if (str != null && (opts.isEmpty || level(str) > level(opts.top))) {
+      } else if (str != null &&
+          (opts.isEmpty || level(str) > level(opts.top))) {
         opts.push(str);
         i++;
       } else {
         try {
-          double right = numbers.pop();
-          double left = numbers.pop();
+          Decimal right = numbers.pop();
+          Decimal left = numbers.pop();
           String opt = opts.top;
           if ("+" == opt) {
             numbers.push(left + right);
@@ -156,12 +158,16 @@ class Calculator {
             numbers.push(left / right);
           }
           opts.pop();
-        } catch (e) {}
+        } catch (e) {
+          print(e);
+        }
       }
     }
-    double v = numbers.pop();
-    if (v.toInt() == v) return "${v.toInt()}";
-    return "$v";
+    Decimal v = numbers.pop();
+    var result = "$v";
+    if (result.length > 15)
+      return v.toStringAsExponential(5).replaceAll("+", "");
+    return result;
   }
 
   int level(String str) {

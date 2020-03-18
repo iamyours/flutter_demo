@@ -4,4 +4,4 @@
 ![search](screen/search.gif)
 
 ### 计算器
-![calculator](calculator.gif)
+![calculator](screen/calculator.gif)

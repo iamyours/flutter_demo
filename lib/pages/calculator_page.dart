@@ -63,10 +63,6 @@ class _CalculatorPageState extends State<CalculatorPage>
       });
   }
 
-  double getLevel() {
-    return currentFontLevel;
-  }
-
   void addText(text) {
     calculator.addText(text);
     var value = calculator.calculate();

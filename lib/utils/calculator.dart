@@ -70,7 +70,7 @@ class Calculator {
   }
 
   static bool isNumber(String text) {
-    RegExp number = RegExp(r"^[0-9\.]+[e]*[\-]*[0-9]*$");
+    RegExp number = RegExp(r"^[\-]*[0-9\.]+[e]*[\-]*[0-9]*$");
     return number.hasMatch(text);
   }
 
